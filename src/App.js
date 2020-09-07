@@ -1,13 +1,21 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, {Component} from "react";
+// import logo from "./logo.svg";
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './components/MenuComponent';
 import "./App.css";
+import { DISHES } from './shared/dishes';
 
-function App() {
-  return (
-    <div>
-      {/* <header className="App-header">
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dishes: DISHES
+    };
+  }
+  render() {
+    return (
+      <div>
+        {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -21,14 +29,15 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Navbar dark color="primary">
-        <div className="container">
-          <NavbarBrand href="/">Ristronte Con Fusion</NavbarBrand>
-        </div>
-      </Navbar>
-      <Menu/>
-    </div>
-  );
+        <Navbar dark color="primary">
+          <div className="container">
+            <NavbarBrand href="/">Ristronte Con Fusion</NavbarBrand>
+          </div>
+        </Navbar>
+        <Menu dishes={this.state.dishes} />
+      </div>
+    );
+  }
 }
 
 export default App;
